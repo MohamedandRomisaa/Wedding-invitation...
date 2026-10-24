@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف محمد وروميساء</title>
+    <!-- خطوط عربية فاخرة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --burgundy: #500814;
+            --burgundy-light: #701222;
+            --burgundy-dark: #30030a;
+            --gold-light: #fff2a3;
+            --gold-main: #d4af37;
+            --gold-dark: #aa7c11;
+            --text-light: #fff;
+            --cream: #fffdf9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', serif;
+        }
+
+        body {
+            background-color: var(--burgundy-dark);
+            color: var(--cream);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- الأظرف الشاشة الكاملة --- */
+        #envelope-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--burgundy-dark);
+            background-image: radial-gradient(circle at center, var(--burgundy-light) 0%, var(--burgundy-dark) 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 330px;
+            height: 240px;
+            background: var(--burgundy);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid var(--gold-main);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.03);
+        }
+
+        /* غطاء الظرف العلوي المثلث */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid transparent;
+            border-right: 165px solid transparent;
+            border-top: 120px solid var(--burgundy-light);
+            transform-origin: top;
+            transition: transform 0.8s ease 0.2s;
+            z-index: 3;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+        }
+
+        /* طيات الظرف الجانبية والأسفل */
+        .envelope-pockets {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .envelope-pockets::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid var(--burgundy);
+            border-right: 165px solid var(--burgundy);
+            border-bottom: 120px solid #5d0a18;
+        }
+
+        /* الختم الذهبي */
+        .wax-seal {
+            position: absolute;
+            z-index: 10;
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #ffe67d 0%, #d4af37 50%, #8a6405 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255,255,255,0.6);
+            border: 2px solid #b38711;
+            animation: pulse-gold 2s infinite;
+            cursor: pointer;
+            bottom: 75px;
+        }
+
+        .wax-seal i {
+            font-size: 24px;
+            color: var(--burgundy-dark);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .wax-seal span {
+            font-size: 10px;
+            font-weight: bold;
+            color: var(--burgundy-dark);
+            margin-top: 2px;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .envelope-names {
+            position: absolute;
+            top: 25px;
+            font-size: 1.5rem;
+            z-index: 4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .envelope-text {
+            position: absolute;
+            bottom: 20px;
+            color: var(--gold-main);
+            font-family: 'Amiri', serif;
+            font-size: 1rem;
+            z-index: 4;
+            letter-spacing: 1px;
+        }
+
+        /* فتح الظرف */
+        .envelope-open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-open .wax-seal,
+        .envelope-open .envelope-names {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.5s ease;
+        }
+
+        .hide-overlay {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* --- المحتوى الرئيسي --- */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1.5s ease 0.5s;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 15px 60px 15px;
+        }
+
+        .show-content {
+            opacity: 1 !important;
+        }
+
+        /* تأثير النص الذهبي اللامع */
+        .gold-shimmer {
+            background: linear-gradient(
+                90deg, 
+                #aa7c11 0%, 
+                #ffe67d 25%, 
+                #d4af37 50%, 
+                #ffe67d 75%, 
+                #aa7c11 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+            font-family: 'Amiri', serif;
+            font-weight: bold;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* الكروت والسكشنات */
+        .card {
+            background: rgba(80, 8, 20, 0.7);
+            border: 1px solid var(--gold-main);
+            border-radius: 15px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 5px; right: 5px; bottom: 5px; left: 5px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* الهيدر والعرسان */
+        .header-title {
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+
+        .couples-names {
+            font-size: 3rem;
+            margin: 20px 0;
+            line-height: 1.3;
+        }
+
+        .heart-icon {
+            color: var(--gold-main);
+            font-size: 2rem;
+            margin: 0 10px;
+            display: inline-block;
+            animation: pulse-heart 1.5s infinite;
+        }
+
+        @keyframes pulse-heart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .invitation-text {
+            font-size: 1.1rem;
+            color: #f0e6d2;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+
+        /* العداد التنازلي */
+        .countdown-title {
+            font-size: 1.4rem;
+            color: var(--gold-main);
+            margin-bottom: 20px;
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            direction: ltr;
+        }
+
+        .time-box {
+            background: rgba(48, 3, 10, 0.8);
+            border: 1px solid var(--gold-main);
+            border-radius: 10px;
+            padding: 12px 10px;
+            min-width: 70px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .time-box span {
+            display: block;
+        }
+
+        .time-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold-light);
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-top: 4px;
+        }
+
+        /* تفاصيل القاعة */
+        .venue-title {
+            font-size: 1.6rem;
+            color: var(--gold-main);
+            margin-bottom: 10px;
+        }
+
+        .venue-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .venue-location {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+            color: var(--burgundy-dark);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            color: #000;
+        }
+
+        /* نموذج تأكيد الحضور RSVP */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--gold-dark);
+            background: rgba(48, 3, 10, 0.9);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-light);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            margin-top: 5px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+            color: var(--burgundy-dark);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #ffe67d, var(--gold-main));
+        }
+
+        /* قسم التعليقات والتهاني */
+        .comments-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: right;
+            padding-left: 5px;
+        }
+
+        .comment-item {
+            background: rgba(48, 3, 10, 0.6);
+            border-right: 3px solid var(--gold-main);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+        }
+
+        .comment-text {
+            color: #eee;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* مشغل الصوت السريع */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(80, 8, 20, 0.9);
+            border: 1px solid var(--gold-main);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold-main);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* تجاوب مع الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            .couples-names { font-size: 2.2rem; }
+            .timer-container { gap: 8px; }
+            .time-box { min-width: 55px; padding: 8px 5px; }
+            .time-number { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- مشغل الموسيقى -->
+    <audio id="wedding-music" loop preload="auto">
+        <source src="song.mp3.mpeg" type="audio/mpeg">
+    </audio>
+
+    <!-- زر التحكم بالموسيقى العائم -->
+    <div class="audio-control" id="audio-toggle" title="تشغيل/إيقاف الموسيقى">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- شاشة الظرف العنابي الفاخر -->
+    <div id="envelope-overlay">
+        <div class="envelope-wrapper" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-pockets"></div>
+            
+            <!-- أساميكم باللون الاسود فوق الختم على الظرف -->
+           
+     <div class="envelope-names gold_shimmer" style="font-family: 'Aref Ruqaa', serif; font-size: 2.2rem;">
+      محمد & روميساء
+</div>
+            <div class="wax-seal" id="seal">
+                <i class="fas fa-heart"></i>
+                <span>افتح الدعوة</span>
+            </div>
+            
+            <div class="envelope-text">دعوة زفاف خاصة</div>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي للدعوة -->
+    <div id="main-content">
+        
+        <!-- كارت الترحيب بأسماء العرسان -->
+        <div class="card">
+            <div class="header-title">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <p style="color: var(--gold-light); margin-bottom: 15px;">"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"</p>
+            <p class="invitation-text">يتشرف كل من العائلتين بدعوتكم لحضور حفل زفاف</p>
+            
+            <!-- أسماء العرسان بالذهبي اللامع داخل الدعوة -->
+              <div class="couples-names">
+ <span style="font-family: 'Aref Ruqaa', serif; color: var(--gold-light); font-size: 2.5rem;">محمد</span>
+ <span class="heart-icon"><i class="fas fa-heart"></i></span>
+ <span style="font-family: 'Aref Ruqaa', serif; color: var(--gold-light); font-size: 2.5rem;">روميساء</span>
+</div>
+            <p class="invitation-text">وتكتمل فرحتنا بوجودكم وشرف حضوركم معنا في أجمل أيام حياتنا</p>
+        </div>
+
+        <!-- كارت العداد التنازلي -->
+        <div class="card">
+            <div class="countdown-title"><i class="far fa-clock"></i> المتبقي على يومنا المميز</div>
+            <div class="timer-container">
+                <div class="time-box">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">يوم</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">ساعة</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">دقيقة</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">ثانية</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- كارت تفاصيل المكان والموعد -->
+        <div class="card">
+            <div class="venue-title"><i class="fas fa-map-marker-alt"></i> موعد ومكان الحفل</div>
+            <p style="color: #fff; font-size: 1.2rem; margin: 10px 0;">الأحد، 15 نوفمبر 2026</p>
+            <p style="color: var(--gold-light); font-size: 1.1rem; margin: 5px 0;">
+    <i class="fas fa-clock"></i> الساعة 7:00 مساءً
+    </p>
+            <div class="venue-name">قاعة G Marriott</div>
+            <div class="venue-location">المنصورة - مصر</div>
+            
+            <a href="https://maps.app.goo.gl/aAWo4wvMY93FieZWA" target="_blank" class="map-btn">
+                <i class="fas fa-location-arrow"></i> موقع القاعة على الخريطة
+            </a>
+        </div>
+
+        <!-- كارت تأكيد الحضور RSVP -->
+        <div class="card">
+            <div class="venue-title"><i class="fas fa-envelope-open-text"></i> تأكيد الحضور (RSVP)</div>
+            <p class="invitation-text" style="font-size: 0.95rem;">يسعدنا تأكيد حضوركم لترتيب أماكنكم</p>
+            
+           <form id="rsvp-form" style="display: flex; flex-direction: column; gap: 12px;">
+    <div class="form-group">
+        <label style="color: var(--gold-light); font-weight: bold;">الاسم الكريم:</label>
+        <input type="text" name="guest_name" required placeholder="أدخل اسمك هنا" 
+               style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; text-align: right; width: 100%; box-sizing: border-box;">
+    </div>
+    
+    <div class="form-group">
+        <label style="color: var(--gold-light); font-weight: bold;">هل ستحضر الحفل؟</label>
+        <select name="attendance" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.8); color: #fff; text-align: right; width: 100%; margin-top: 5px;">
+            <option value="سأحضر بكل سرور">سأحضر بكل سرور ✨</option>
+            <option value="أعتذر عن الحضور">أعتذر عن الحضور 🤍</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label style="color: var(--gold-light); font-weight: bold;">عدد الحاضرين:</label>
+        <select name="guests_count" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.8); color: #fff; text-align: right; width: 100%; margin-top: 5px;">
+            <option value="شخص">شخص</option>
+            <option value="شخصين">شخصين</option>
+            <option value="أكثر من شخصين">أكثر من شخصين</option>
+        </select>
+    </div>
+
+    <button type="submit" id="rsvp-btn" 
+            style="padding: 10px; border-radius: 8px; border: none; background: linear-gradient(45deg, var(--gold-main), var(--gold-light)); color: #30030a; font-weight: bold; cursor: pointer; margin-top: 10px;">
+        تأكيد الحضور
+    </button>
+    
+    <p id="rsvp-status" style="display:none; color: var(--gold-light); font-weight: bold; margin-top: 10px; text-align: center;"></p>
+</form>
+
+<script>
+  var rsvpForm = document.getElementById("rsvp-form");
+  
+  rsvpForm.addEventListener("submit", function(ev) {
+    ev.preventDefault();
+    var btn = document.getElementById("rsvp-btn");
+    var status = document.getElementById("rsvp-status");
+    
+    btn.innerText = "جاري التأكيد...";
+    btn.disabled = true;
+
+    var data = new FormData(rsvpForm);
+    
+    fetch("https://formspree.io/f/xkjjndka", {
+      method: "POST",
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.style.display = "block";
+        status.innerHTML = "تم تأكيد حضورك بنجاح! شكراً لك ❤️";
+        btn.innerText = "تم التأكيد ✓";
+        rsvpForm.reset();
+      } else {
+        status.style.display = "block";
+        status.style.color = "#ff4d4d";
+        status.innerHTML = "حدث خطأ، برجاء المحاولة مرة أخرى.";
+        btn.innerText = "تأكيد الحضور";
+        btn.disabled = false;
+      }
+    }).catch(error => {
+      status.style.display = "block";
+      status.style.color = "#ff4d4d";
+      status.innerHTML = "حدث خطأ في الاتصال.";
+      btn.innerText = "تأكيد الحضور";
+      btn.disabled = false;
+    });
+  });
+</script>
+
+       <!-- كارت التهاني والتبريكات (Disqus) -->
+<div class="card">
+    <div class="venue-title"><i class="fas fa-comments"></i> دفتر التهاني والأمنيات</div>
+    <p class="invitation-text" style="font-size: 0.95rem;">شاركونا كلماتكم الطيبة وتهانيكم للعروسين ✨</p>
+    
+    <!-- صندوق التهاني البسيط -->
+<div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid var(--gold-main); margin-top: 15px;">
+    <form action="https://formspree.io/f/xkjjndka" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" name="guest_name" placeholder="اسمك الكريم" required 
+               style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; text-align: right;">
+        
+        <textarea name="wishes" rows="3" placeholder="اكتب مباركتك للعروسين هنا..." required 
+                  style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; text-align: right; resize: vertical;"></textarea>
+        
+        <button type="submit" 
+                style="padding: 10px; border-radius: 8px; border: none; background: linear-gradient(45deg, var(--gold-main), var(--gold-light)); color: #30030a; font-weight: bold; font-size: 1rem; cursor: pointer;">
+            إرسال التهنئة ❤️
+        </button>
+    </form>
+</div>
+</div>
+
+    <script>
+        // --- 1. التعامل مع الظرف والموسيقى ---
+        const envelope = document.getElementById('envelope');
+        const overlay = document.getElementById('envelope-overlay');
+        const mainContent = document.getElementById('main-content');
+        const music = document.getElementById('wedding-music');
+        const audioToggle = document.getElementById('audio-toggle');
+
+        envelope.addEventListener('click', function() {
+            envelope.classList.add('envelope-open');
+            
+            // تشغيل الصوت
+            music.play().catch(e => console.log("Auto-play error:", e));
+
+            setTimeout(() => {
+                overlay.classList.add('hide-overlay');
+                mainContent.classList.add('show-content');
+            }, 1000);
+        });
+
+        // زر التحكم بالصوت
+        let isPlaying = true;
+        audioToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                music.pause();
+                audioToggle.innerHTML = '<i class="fas fa-music-slash"></i>';
+            } else {
+                music.play();
+                audioToggle.innerHTML = '<i class="fas fa-music"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- 2. العداد التنازلي ---
+        const weddingDate = new Date("Nov 15, 2026 19:00:00").getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".timer-container").innerHTML = "<h3 style='color:var(--gold-light)'>تم الزفاف السعيد! ❤️</h3>";
+            }
+        }, 1000);
+
+        // --- 3. نظام التعليقات المحلي ---
+        const commentForm = document.getElementById('comment-form');
+        const commentsContainer = document.getElementById('comments-container');
+
+        function loadComments() {
+            const savedComments = JSON.parse(localStorage.getItem('wedding_comments') || '[]');
+            savedComments.forEach(c => {
+                addCommentToDOM(c.name, c.message);
+            });
+        }
+
+        function addCommentToDOM(name, message) {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment-item';
+            commentDiv.innerHTML = `
+                <div class="comment-author">${escapeHTML(name)}</div>
+                <div class="comment-text">${escapeHTML(message)}</div>
+            `;
+            commentsContainer.prepend(commentDiv);
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('comment-name');
+            const messageInput = document.getElementById('comment-message');
+
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if(name && message) {
+                addCommentToDOM(name, message);
+
+                const savedComments = JSON.parse(localStorage.getItem('wedding_comments') || '[]');
+                savedComments.push({ name, message });
+                localStorage.setItem('wedding_comments', JSON.stringify(savedComments));
+
+                nameInput.value = '';
+                messageInput.value = '';
+            }
+        });
+
+        loadComments();
+    </script>
+</body>
+</html>

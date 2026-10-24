@@ -640,14 +640,14 @@
         btn.innerText = "تأكيد الحضور";
         btn.disabled = false;
       }
-    }).catch(error => {
+   }).catch(error => {
       status.style.display = "block";
       status.style.color = "#ff4d4d";
       status.innerHTML = "حدث خطأ في الاتصال.";
       btn.innerText = "تأكيد الحضور";
       btn.disabled = false;
     });
-  });
+});
 </script>
 
        <!-- صندوق التهاني -->
@@ -720,12 +720,13 @@
         wishesBtn.innerText = "إرسال التهنئة ❤️";
         wishesBtn.disabled = false;
       }
-    }).catch(error => {
-      alert("حدث خطأ في الاتصال، برجاء التأكد من النت.");
-      wishesBtn.innerText = "إرسال التهنئة ❤️";
-      wishesBtn.disabled = false;
-    });
+ });
+  }).catch(error => {
+    alert("حدث خطأ في الاتصال، برجاء التأكد من النت.");
+    wishesBtn.innerText = "إرسال التهنئة ❤️";
+    wishesBtn.disabled = false;
   });
+});
 </script>
             <script>
         // --- 1. التعامل مع الظرف والموسيقى ---

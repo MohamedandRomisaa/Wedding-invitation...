@@ -650,22 +650,25 @@
 });
 </script>
 
-       <!-- صندوق التهاني -->
-<div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid var(--gold-main);">
+    <!-- كارت التهاني والتبريكات (Disqus) -->
+<div class="card">
+    <div class="venue-title"><i class="fas fa-comments"></i> دفتر التهاني والأمنيات</div>
+    <p class="invitation-text" style="font-size: 0.95rem;">شاركونا كلماتكم الطيبة وتهانيكم للعروسين ✨</p>
     
-    <form id="wishes-form" style="display: flex; flex-direction: column; gap: 10px;">
-        <input type="text" name="guest_name" placeholder="اكتب اسمك هنا" required 
-               style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; text-align: right;">
+    <!-- صندوق التهاني البسيط -->
+<div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid var(--gold-main); margin-top: 15px;">
+    <form action="https://formspree.io/f/xkjjndka" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" name="guest_name" placeholder="اسمك الكريم" required 
+               style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; text-align: right;">
         
-        <textarea name="wishes" rows="3" placeholder="شاركونا كلماتكم الطيبة وتهانيكم للعروسين✨" required 
-                  style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; text-align: right;"></textarea>
+        <textarea name="wishes" rows="3" placeholder="اكتب مباركتك للعروسين هنا..." required 
+                  style="padding: 10px; border-radius: 8px; border: 1px solid var(--gold-main); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; text-align: right; resize: vertical;"></textarea>
         
-        <button type="submit" id="wishes-btn" 
-                style="padding: 10px; border-radius: 8px; border: none; background: linear-gradient(45deg, var(--gold-main), var(--gold-light)); color: #30030a; font-weight: bold; cursor: pointer;">
-            إرسال التهنئة ❤️
-        </button>
+       <button type="submit" id="wishes-btn" style="padding: 10px; border-radius: 8px; border: none; background: linear-gradient(45deg, var(--gold-main), var(--gold-light)); color: #30030a; font-weight: bold; cursor: pointer;">
+    إرسال التهنئة ❤️
+</button>
     </form>
-
+</div>
 </div>
 
 <!-- كارت الشاشة الكاملة (رسالة الشكر الختامية فقط) -->
